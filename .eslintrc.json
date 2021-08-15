@@ -39,7 +39,7 @@
 		"block-scoped-var": "warn",
 		"dot-notation": "error",
 		"eqeqeq": "error",
-		"camelcase": ["error", {"ignoreImports": true}, {"properties":  "never"}],
+		"camelcase": ["error", {"ignoreImports": true, "properties":  "never"}],
 		"comma-spacing": ["error", { "before": false, "after": true }],
 		"prefer-const": "error"
     }
