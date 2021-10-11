@@ -6,6 +6,8 @@ import { useFonts, Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/
 
 import { Login } from './src/pages/Login';
 import { BackgroundDegrade } from './src/components/backgroundDegrade';
+import { theme } from './src/styles/theme';
+import { Home } from './src/pages/Home';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -16,13 +18,16 @@ export default function App() {
 		return <AppLoading />;
 	else 
 		return (
-			<BackgroundDegrade>
+			<BackgroundDegrade
+				firstColor={theme.colors.secondary80}
+				secondColor={theme.colors.secondary100}
+			>
 				<StatusBar 
 					barStyle='light-content'
 					backgroundColor='transparent'
 					translucent
 				/>
-				<Login/>
+				<Home />
 			</BackgroundDegrade>
 		);
 }
