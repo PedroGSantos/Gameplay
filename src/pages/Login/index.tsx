@@ -5,7 +5,7 @@ import Background from '../../assets/backgroundLogin.png';
 import { DiscordButton } from '../../components/discordButton';
 import { styles } from './styles';
 
-export function Login(){
+export function Login({ navigation }){
 	return(
 		<View style={styles.container}>
 			<Image 
@@ -24,6 +24,7 @@ export function Login(){
 					favoritos com seus amigos
 				</Text>
 				<DiscordButton 
+					onPress={() => navigation.navigate('Home')}
 					title={'Entrar com Discord'}
 				/>
 			</View>

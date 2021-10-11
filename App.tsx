@@ -4,10 +4,9 @@ import AppLoading from 'expo-app-loading';
 import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
 import { useFonts, Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 
-import { Login } from './src/pages/Login';
 import { BackgroundDegrade } from './src/components/backgroundDegrade';
 import { theme } from './src/styles/theme';
-import { Home } from './src/pages/Home';
+import { Routes } from './src/navigation/routes';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -27,7 +26,7 @@ export default function App() {
 					backgroundColor='transparent'
 					translucent
 				/>
-				<Home />
+				<Routes />
 			</BackgroundDegrade>
 		);
 }
