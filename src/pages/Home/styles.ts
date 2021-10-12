@@ -75,12 +75,6 @@ export const styles = StyleSheet.create({
 		paddingLeft: wp('6.4')
 	},
 
-	imageGame: {
-		width: wp('17%'),
-		height: hp('8.3%'),
-		borderRadius: 8
-	},
-
 	infoGame: {
 		flex: 1,
 		justifyContent: 'space-between',

@@ -24,6 +24,7 @@ export function Categories({ title, svg, check = false } : Props){
 					secondColor={theme.colors.secondary70}
 					moreStyles={styles.containerBackground}
 				>
+					<View style={check ? [styles.box, { backgroundColor: theme.colors.primary, borderWidth: 0 }] : styles.box}/>
 					{svg}
 					<Text style={styles.message}>{title}</Text>
 				</BackgroundDegrade>
@@ -54,6 +55,17 @@ const styles = StyleSheet.create({
 		borderRadius: 8
 	},
     
+	box: {
+		alignSelf: 'flex-end',
+		marginRight: wp('2.1%'),
+		width: wp('2.1%'),
+		height: hp('0.9%'),
+		backgroundColor: '#0E1647',
+		borderColor: '#243189',
+		borderWidth: 1,
+		borderRadius: 2
+	},
+
 	message: {
 		color: '#FFF',
 		fontFamily: theme.fonts.title700,

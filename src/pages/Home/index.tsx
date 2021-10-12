@@ -16,6 +16,7 @@ import { ListHeader } from '../../components/listHeader';
 import CalendarSVG from '../../assets/calendar.svg';
 import PlayerSVG from '../../assets/player.svg';
 import { theme } from '../../styles/theme';
+import { PictureGame } from '../../components/pictureGame';
 
 export function Home(){
 	const [categorySelected, setCategorySelected] = useState('');
@@ -74,14 +75,10 @@ export function Home(){
 			</View>
 			<FlatList 
 				data={dataFlat}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => String(item.id)}
 				renderItem={({ item }) => (
 					<View style={styles.containerFlat}>
-						<Image 
-							source={{uri: item.icon}}
-							style={styles.imageGame}
-							resizeMode='stretch'
-						/>
+						<PictureGame url={item.icon} showBackground={true} />
 						<View style={styles.infoGame}>
 							<View style={styles.headerGame}>
 								<Text style={styles.titleGame}>{item.title}</Text>
@@ -95,7 +92,7 @@ export function Home(){
 								</View>
 								<View style={styles.specificInfoGameContainer}>
 									<PlayerSVG 
-										color={item.status === 'Visitante' ? theme.colors.on : theme.colors.primary}
+										fill={item.status === 'Visitante' ? theme.colors.on : theme.colors.primary}
 									/>
 									<Text style={styles.statusGame}>{item.status}</Text>
 								</View>
