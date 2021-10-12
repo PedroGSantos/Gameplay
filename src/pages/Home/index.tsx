@@ -5,7 +5,6 @@ import {
 	Text, 
 	TouchableOpacity,
 	ScrollView, 
-	Image
 } from 'react-native';
 
 import { Categories } from '../../components/categories';
@@ -17,6 +16,7 @@ import CalendarSVG from '../../assets/calendar.svg';
 import PlayerSVG from '../../assets/player.svg';
 import { theme } from '../../styles/theme';
 import { PictureGame } from '../../components/pictureGame';
+import { BackgroundDegrade } from '../../components/backgroundDegrade';
 
 export function Home(){
 	const [categorySelected, setCategorySelected] = useState('');
@@ -34,74 +34,79 @@ export function Home(){
 	}
 
 	return(
-		<View style={styles.container}>
-			<View style={styles.header}>
-				<ProfilePicture url={'https://avatars.githubusercontent.com/u/63265629?v=4'}/>
-				<View style={styles.headerText}>
-					<Text style={styles.title}>
-                        Olá, <Text style={styles.titleBold}>Pedro</Text>
-					</Text>
-					<Text style={styles.message}>Hoje é dia de vitória</Text>
-				</View>
-				<TouchableOpacity 
-					style={styles.buttonHeader}
-					activeOpacity={0.7}
-				>
-					<Text style={styles.buttonText}>+</Text>
-				</TouchableOpacity>
-			</View>
-			<ScrollView
-				horizontal
-				style={styles.scroll}
-				showsHorizontalScrollIndicator={false}
-				contentContainerStyle={styles.categories}
-			>
-				{categories.map((category) => (
-					<TouchableOpacity
-						key={category.id}
+		<BackgroundDegrade
+			firstColor={theme.colors.secondary80}
+			secondColor={theme.colors.secondary100}
+		>
+			<View style={styles.container}>
+				<View style={styles.header}>
+					<ProfilePicture url={'https://avatars.githubusercontent.com/u/63265629?v=4'}/>
+					<View style={styles.headerText}>
+						<Text style={styles.title}>
+							Olá, <Text style={styles.titleBold}>Pedro</Text>
+						</Text>
+						<Text style={styles.message}>Hoje é dia de vitória</Text>
+					</View>
+					<TouchableOpacity 
+						style={styles.buttonHeader}
 						activeOpacity={0.7}
-						onPress={() => handleCategorySelected(category.name)}
 					>
-						<Categories 
-							title={category.name}
-							svg={category.icon}
-							check={category.name === categorySelected}
-						/>
+						<Text style={styles.buttonText}>+</Text>
 					</TouchableOpacity>
-				))}
-			</ScrollView>
-			<View style={styles.content}>
-				<ListHeader title='Partidas Agendadas' message='Total 6'/>
-			</View>
-			<FlatList 
-				data={dataFlat}
-				keyExtractor={(item) => String(item.id)}
-				renderItem={({ item }) => (
-					<View style={styles.containerFlat}>
-						<PictureGame url={item.icon} showBackground={true} />
-						<View style={styles.infoGame}>
-							<View style={styles.headerGame}>
-								<Text style={styles.titleGame}>{item.title}</Text>
-								<Text style={styles.categoryGame}>{item.category}</Text>
-							</View>
-							<View style={styles.contentGame}>
-								<View style={styles.specificInfoGameContainer}>
-									<CalendarSVG 
-									/>
-									<Text style={styles.dateGame}>{item.date}</Text>
+				</View>
+				<ScrollView
+					horizontal
+					style={styles.scroll}
+					showsHorizontalScrollIndicator={false}
+					contentContainerStyle={styles.categories}
+				>
+					{categories.map((category) => (
+						<TouchableOpacity
+							key={category.id}
+							activeOpacity={0.7}
+							onPress={() => handleCategorySelected(category.name)}
+						>
+							<Categories 
+								title={category.name}
+								svg={category.icon}
+								check={category.name === categorySelected}
+							/>
+						</TouchableOpacity>
+					))}
+				</ScrollView>
+				<View style={styles.content}>
+					<ListHeader title='Partidas Agendadas' message='Total 6'/>
+				</View>
+				<FlatList 
+					data={dataFlat}
+					keyExtractor={(item) => String(item.id)}
+					renderItem={({ item }) => (
+						<View style={styles.containerFlat}>
+							<PictureGame url={item.icon} showBackground={true} />
+							<View style={styles.infoGame}>
+								<View style={styles.headerGame}>
+									<Text style={styles.titleGame}>{item.title}</Text>
+									<Text style={styles.categoryGame}>{item.category}</Text>
 								</View>
-								<View style={styles.specificInfoGameContainer}>
-									<PlayerSVG 
-										fill={item.status === 'Visitante' ? theme.colors.on : theme.colors.primary}
-									/>
-									<Text style={styles.statusGame}>{item.status}</Text>
+								<View style={styles.contentGame}>
+									<View style={styles.specificInfoGameContainer}>
+										<CalendarSVG 
+										/>
+										<Text style={styles.dateGame}>{item.date}</Text>
+									</View>
+									<View style={styles.specificInfoGameContainer}>
+										<PlayerSVG 
+											fill={item.status === 'Visitante' ? theme.colors.on : theme.colors.primary}
+										/>
+										<Text style={styles.statusGame}>{item.status}</Text>
+									</View>
 								</View>
 							</View>
 						</View>
-					</View>
-				)}
-				
-			/>
-		</View>
+					)}
+					
+				/>
+			</View>
+		</BackgroundDegrade>
 	);
 }

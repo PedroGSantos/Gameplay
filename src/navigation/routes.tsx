@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Login } from '../pages/Login';
 import { Home } from '../pages/Home';
+import { theme } from '../styles/theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export function Routes(){
 				screenOptions={{
 					headerShown: false,
 					contentStyle: {
-						backgroundColor: 'transparent'
+						backgroundColor: theme.colors.secondary100
 					}
 				}}
 			>
