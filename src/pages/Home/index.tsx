@@ -18,7 +18,7 @@ import { theme } from '../../styles/theme';
 import { PictureGame } from '../../components/pictureGame';
 import { BackgroundDegrade } from '../../components/backgroundDegrade';
 
-export function Home(){
+export function Home({ navigation }){
 	const [categorySelected, setCategorySelected] = useState('');
 	const dataFlat = [
 		{id: 1, title: 'Lendários', category: 'Ranqueada', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
@@ -50,6 +50,7 @@ export function Home(){
 					<TouchableOpacity 
 						style={styles.buttonHeader}
 						activeOpacity={0.7}
+						onPress={() => {navigation.navigate('GameDetails');}}
 					>
 						<Text style={styles.buttonText}>+</Text>
 					</TouchableOpacity>

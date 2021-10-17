@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text, Image, TouchableOpacity, TouchableOpacityProps, StyleSheet, View} from 'react-native';
+import {Text, TouchableOpacity, TouchableOpacityProps, StyleSheet, View} from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-import Discord from '../assets/discord.png';
+import DiscordSVG from '../assets/discord.svg';
 import { theme } from '../styles/theme';
 
 type Props = TouchableOpacityProps & {
@@ -17,11 +17,7 @@ export function DiscordButton({title, ...rest} : Props){
 			{...rest}
 		>
 			<View style={styles.imageContainer}>
-				<Image 
-					style={styles.discordImage} 
-					source={Discord}
-					resizeMode="stretch"
-				/>
+				<DiscordSVG width={styles.discordWidth} height={styles.discordHeight}/>
 			</View>
 			
 			<Text style={styles.textButton}>{title}</Text>
@@ -37,8 +33,13 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		width: wp('73%'),
 		height: hp('6.8%'),
-		alignItems: 'center'
+		alignItems: 'center',
+		alignSelf: 'center',
 	},
+
+	discordWidth: wp('6.4%'),
+
+	discordHeight: hp('2.2%'),
 
 	imageContainer: {
 		width: wp('14.9%'),
