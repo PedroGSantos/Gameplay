@@ -6,6 +6,7 @@ import { Login } from '../pages/Login';
 import { Home } from '../pages/Home';
 import { GameDetails } from '../pages/GameDetails';
 import { theme } from '../styles/theme';
+import { Scheduling } from '../pages/Scheduling';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,10 @@ export function Routes(){
 				<Stack.Screen 
 					name='GameDetails'
 					component={GameDetails}
+				/>
+				<Stack.Screen 
+					name='Scheduling'
+					component={Scheduling}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

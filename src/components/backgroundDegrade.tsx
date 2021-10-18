@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
-import { StyleSheet } from 'react-native';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = {
 	children: ReactNode,
 	firstColor: string,
 	secondColor: string,
-	moreStyles?: Record<string, unknown>
+	moreStyles?: ViewStyle | TextStyle | ImageStyle
 }
 
 export function BackgroundDegrade({ children, firstColor, secondColor, moreStyles } : Props){

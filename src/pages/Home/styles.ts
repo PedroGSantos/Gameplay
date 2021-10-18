@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
 	header: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop:  hp('6.8%'),
+		marginTop: hp('6.8%'),
+		marginBottom: hp('4.9%'),
 		paddingHorizontal: wp('6.4')
 	},
 
@@ -52,17 +53,6 @@ export const styles = StyleSheet.create({
 		color: '#FFF',
 		fontFamily: theme.fonts.title700,
 		fontSize: 24
-	},
-
-	scroll: {
-		marginTop: hp('4.9%'),
-		minHeight: hp('14.7%'),
-		maxHeight: hp('14.7%')
-	},
-
-	categories: {
-		paddingLeft: wp('6.4'),
-		height: hp('14.7%'),
 	},
 
 	content: {
