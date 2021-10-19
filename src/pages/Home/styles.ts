@@ -59,6 +59,10 @@ export const styles = StyleSheet.create({
 		marginTop: hp('3.6%')
 	},
 
+	footerList: {
+		paddingBottom: hp('5.6%')
+	},
+	
 	containerFlat: {
 		flexDirection: 'row',
 		marginTop: hp('4%'),

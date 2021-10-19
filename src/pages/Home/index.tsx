@@ -23,6 +23,9 @@ export function Home({ navigation }){
 		{id: 3, title: 'Rumo ao topo', category: '1x1', status: 'Anfitrião', date: '20/06 às 09:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
 		{id: 4, title: 'Bora queimar tudo', category: 'Ranqueada', status: 'Anfitrião', date: '20/06 às 14:20h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
 		{id: 5, title: 'Valorosos', category: 'Diversão', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
+		{id: 6, title: 'Valorosos', category: 'Diversão', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
+		{id: 7, title: 'Valorosos', category: 'Diversão', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
+		{id: 8, title: 'Valorosos', category: 'Diversão', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
 	];
 
 	return(
@@ -54,6 +57,7 @@ export function Home({ navigation }){
 				<FlatList 
 					data={dataFlat}
 					keyExtractor={(item) => String(item.id)}
+					contentContainerStyle={styles.footerList}
 					renderItem={({ item }) => (
 						<TouchableOpacity onPress={() => navigation.navigate('GameDetails')}>
 							<View style={styles.containerFlat}>
