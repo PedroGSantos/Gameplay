@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView, Platform, Modal, FlatList} from 'react-native';
+import { View, Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView, Platform, Modal, FlatList, TouchableWithoutFeedback} from 'react-native';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
@@ -18,7 +18,8 @@ type ServerProps = {
 	id: number
 	name: string, 
 	icon: null | string,
-	owner: boolean
+	owner: boolean,
+	game: string
 }
 
 export function Scheduling({ navigation }){
@@ -52,36 +53,76 @@ export function Scheduling({ navigation }){
 			id: 1,
 			name: 'Rumo ao topo', 
 			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
-			owner: true
+			owner: true,
+			game: 'Valorant'
 		},
 		{
 			id: 2,
 			name: 'Bora queimar tudo', 
 			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
-			owner: false
+			owner: false,
+			game: 'Valorant'
 		},
 		{
 			id: 3,
 			name: 'Yeah, Boy', 
 			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
-			owner: true
+			owner: true,
+			game: 'Valorant'
 		},
 		{
 			id: 4,
 			name: 'Valorosos', 
 			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
-			owner: true
+			owner: true,
+			game: 'Valorant'
+		},
+		{
+			id: 5,
+			name: 'Valorosos', 
+			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
+			owner: true,
+			game: 'Valorant'
+		},
+		{
+			id: 6,
+			name: 'Valorosos', 
+			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
+			owner: true,
+			game: 'Valorant'
+		},
+		{
+			id: 7,
+			name: 'Valorosos', 
+			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
+			owner: true,
+			game: 'Valorant'
+		},
+		{
+			id: 8,
+			name: 'Valorosos', 
+			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
+			owner: true,
+			game: 'Valorant'
+		},
+		{
+			id: 9,
+			name: 'Valorosos', 
+			icon: 'https://avatars.githubusercontent.com/u/63265629?v=4',
+			owner: true,
+			game: 'Valorant'
 		},
 	];
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedServer, setSelectedServer] = useState<ServerProps>({} as ServerProps);
-	function handleOpenModal(){
+
+	function handleOpenCloseModal(){
 		setIsModalOpen(!isModalOpen);
 	}
 
 	function handleSelectedServer(item : ServerProps){
 		setSelectedServer(item);
-		handleOpenModal();
+		handleOpenCloseModal();
 	}
 
 	function Line(){
@@ -105,7 +146,7 @@ export function Scheduling({ navigation }){
 						<View style={styles.content}>
 							<Text style={styles.title}>Categoria</Text>
 							<ListCategories />
-							<TouchableOpacity style={styles.modalServers} onPress={handleOpenModal}>
+							<TouchableOpacity style={styles.modalServers} onPress={handleOpenCloseModal}>
 								{selectedServer.icon ?
 									<Image
 										source={{uri: selectedServer.icon}}
@@ -115,11 +156,18 @@ export function Scheduling({ navigation }){
 									: 
 									<View style={styles.box} />
 								}
-								<Text 
-									style={[styles.title, {marginBottom: 0, marginHorizontal: 0, flex: 1, textAlign: 'center'}]}
-								>
-									{selectedServer.name ? selectedServer.name : 'Selecione um servidor'}
-								</Text>
+								{ selectedServer.name ? 
+									<View style={styles.contentServer}>
+										<Text style={[styles.title, {marginBottom: 0, marginHorizontal: 0, flex: 1, textAlign: 'center'}]}>{selectedServer.name}</Text>
+										<Text style={styles.game}>{selectedServer.game}</Text>
+									</View>
+									:
+									<Text 
+										style={[styles.title, {marginBottom: 0, marginHorizontal: 0, flex: 1, textAlign: 'center'}]}
+									>
+										Selecione um servidor
+									</Text>
+								}
 								<ArrowSVG width={styles.arrowWidth} height={styles.arrowHeight} style={styles.arrow} />
 							</TouchableOpacity>
 							<Formik
@@ -211,39 +259,43 @@ export function Scheduling({ navigation }){
 						<Modal 
 							visible={isModalOpen}
 							animationType='slide'
+							onRequestClose={handleOpenCloseModal}
 							transparent
 							statusBarTranslucent
 						>
-							<View style={styles.modalContainer}>
-								<BackgroundDegrade 
-									moreStyles={styles.modalContent}
-									firstColor={theme.colors.secondary100}
-									secondColor={theme.colors.secondary80}
-								>
-									<View style={styles.bar}/>
-									<FlatList 
-										data={data}
-										keyExtractor={(item) => String(item.id)}
-										ItemSeparatorComponent={Line}
-										ListFooterComponent={Line}
-										ListHeaderComponent={Line}
-										ListHeaderComponentStyle={styles.headerList}
-										renderItem={({ item }) => (
-											<TouchableOpacity 
-												style={styles.serverContainer}
-												onPress={() => handleSelectedServer(item)}
-											>
-												<PictureGame url={item.icon} showBackground={false} />
-												<View style={styles.serverDetails}>
-													<Text style={[styles.title, {marginHorizontal: 0, marginBottom: 0}]}>{item.name}</Text>
-													<Text style={styles.message}>{item.owner ? 'Administrador' : 'Convidado'}</Text>
-												</View>
-												<ArrowSVG width={styles.arrowWidth} height={styles.arrowHeight} style={[styles.arrow, {alignSelf: 'center'}]}/>
-											</TouchableOpacity>
-										)}
-									/>
-								</BackgroundDegrade>
-							</View>
+							<TouchableWithoutFeedback onPress={handleOpenCloseModal}>
+								<View style={styles.modalContainer}>
+									<BackgroundDegrade 
+										moreStyles={styles.modalContent}
+										firstColor={theme.colors.secondary100}
+										secondColor={theme.colors.secondary80}
+									>
+										<View style={styles.bar}/>
+										<FlatList 
+											data={data}
+											keyExtractor={(item) => String(item.id)}
+											ItemSeparatorComponent={Line}
+											ListFooterComponent={Line}
+											ListHeaderComponent={Line}
+											ListHeaderComponentStyle={styles.headerList}
+											contentContainerStyle={styles.footerList}
+											renderItem={({ item }) => (
+												<TouchableOpacity 
+													style={styles.serverContainer}
+													onPress={() => handleSelectedServer(item)}
+												>
+													<PictureGame url={item.icon} showBackground={false} />
+													<View style={styles.serverDetails}>
+														<Text style={[styles.title, {marginHorizontal: 0, marginBottom: 0}]}>{item.name}</Text>
+														<Text style={styles.message}>{item.owner ? 'Administrador' : 'Convidado'}</Text>
+													</View>
+													<ArrowSVG width={styles.arrowWidth} height={styles.arrowHeight} style={[styles.arrow, {alignSelf: 'center'}]}/>
+												</TouchableOpacity>
+											)}
+										/>
+									</BackgroundDegrade>
+								</View>
+							</TouchableWithoutFeedback>
 						</Modal>
 					</View>
 				</BackgroundDegrade>

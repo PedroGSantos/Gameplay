@@ -35,6 +35,19 @@ export const styles = StyleSheet.create({
 		overflow: 'hidden'
 	},
 
+	contentServer: {
+		flex: 1,
+		alignItems: 'flex-start',
+		paddingLeft: wp('5.3%'),
+		paddingVertical: hp('1.4%')
+	},
+
+	game: {
+		fontFamily: theme.fonts.text400,
+		fontSize: 13,
+		color: theme.colors.highlight
+	},
+
 	box: {
 		backgroundColor: theme.colors.secondary40,
 		height: hp('8.3%'),
@@ -87,13 +100,14 @@ export const styles = StyleSheet.create({
 		width: wp('90%'),
 		height: hp('11.6%'),
 		marginTop: hp('2.2%'),
-		paddingHorizontal: wp('3%'),
+		padding: wp('3%'),
 		color: theme.colors.heading,
 		backgroundColor: theme.colors.secondary40,
 		borderWidth: 1,
 		borderRadius: 8,
 		borderColor: theme.colors.secondary50,
-		alignSelf: 'center'
+		alignSelf: 'center',
+		textAlignVertical: 'top'
 	},
 
 	button: {
@@ -133,6 +147,10 @@ export const styles = StyleSheet.create({
 
 	headerList: {
 		paddingTop: hp('12.6%')
+	},
+	
+	footerList: {
+		paddingBottom: hp('2.6%')
 	},
 
 	serverContainer: {
