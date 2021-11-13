@@ -11,6 +11,7 @@ web-build/
 .yarnrc
 .npmrc
 yarn-error.log
+.env
 
 # macOS
 .DS_Store
