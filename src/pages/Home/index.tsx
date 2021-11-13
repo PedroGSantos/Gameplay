@@ -15,6 +15,7 @@ import { theme } from '../../styles/theme';
 import { PictureGame } from '../../components/pictureGame';
 import { BackgroundDegrade } from '../../components/backgroundDegrade';
 import { ListCategories } from '../../components/listCategories';
+import { useAuth } from '../../store/authStore';
 
 export function Home({ navigation }){
 	const dataFlat = [
@@ -28,6 +29,8 @@ export function Home({ navigation }){
 		{id: 8, title: 'Valorosos', category: 'Diversão', status: 'Anfitrião', date: '18/06 às 21:00h', icon: 'https://s3.amazonaws.com/battlefy-user-generated-assets-with-permissions%2Fgoogle-oauth2%7C112881243283626187963/1515813413151.photo.jpg'},
 	];
 
+	const { user } = useAuth();
+
 	return(
 		<BackgroundDegrade
 			firstColor={theme.colors.secondary80}
@@ -35,10 +38,10 @@ export function Home({ navigation }){
 		>
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<ProfilePicture url={'https://avatars.githubusercontent.com/u/63265629?v=4'}/>
+					<ProfilePicture url={user.avatar}/>
 					<View style={styles.headerText}>
 						<Text style={styles.title}>
-							Olá, <Text style={styles.titleBold}>Pedro</Text>
+							Olá, <Text style={styles.titleBold}>{user.firstName}</Text>
 						</Text>
 						<Text style={styles.message}>Hoje é dia de vitória</Text>
 					</View>

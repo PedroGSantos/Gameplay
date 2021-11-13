@@ -7,12 +7,12 @@ import { useFonts, Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/
 import { BackgroundDegrade } from './src/components/backgroundDegrade';
 import { theme } from './src/styles/theme';
 import { Routes } from './src/navigation/routes';
+import { AuthStore } from './src/store/authStore';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
 		Inter_400Regular, Inter_500Medium, Rajdhani_500Medium, Rajdhani_700Bold
 	});
-
 	if (!fontsLoaded)
 		return <AppLoading />;
 	else 
@@ -26,7 +26,9 @@ export default function App() {
 					backgroundColor='transparent'
 					translucent
 				/>
-				<Routes />
+				<AuthStore>
+					<Routes />
+				</AuthStore>
 			</BackgroundDegrade>
 		);
 }

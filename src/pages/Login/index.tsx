@@ -1,13 +1,31 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { 
+	View, 
+	Text, 
+	Image, 
+	Alert, 
+	ActivityIndicator 
+} from 'react-native';
 
 import Background from '../../assets/backgroundLogin.png';
 import { DiscordButton } from '../../components/discordButton';
 import { styles } from './styles';
 import { BackgroundDegrade } from '../../components/backgroundDegrade';
 import { theme } from '../../styles/theme';
+import { useAuth } from '../../store/authStore';
 
 export function Login({ navigation }){
+
+	const { user, signIn, loading } = useAuth();
+
+	async function handleSignIn(){
+		try {
+			await signIn();
+			navigation.navigate('Home');
+		} catch (error) {
+			Alert.alert(error);
+		}
+	}
 	return(
 		<BackgroundDegrade
 			firstColor={theme.colors.secondary80}
@@ -29,10 +47,15 @@ export function Login({ navigation }){
 						Crie grupos para jogar seus games {'\n'}
 						favoritos com seus amigos
 					</Text>
-					<DiscordButton 
-						onPress={() => navigation.navigate('Home')}
-						title={'Entrar com Discord'}
-					/>
+					{
+						loading ? 
+							<ActivityIndicator color={theme.colors.primary} />
+							:
+							<DiscordButton 
+								onPress={handleSignIn}
+								title={'Entrar com Discord'}
+							/>
+					}
 				</View>
 			</View>
 		</BackgroundDegrade>
